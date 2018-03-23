@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/hufei1993/airbnb-guide/issues"
   },
-  "homepage": "https://github.com/hufei1993/airbnb-guide#readme"
+  "homepage": "https://github.com/hufei1993/airbnb-guide#readme",
+  "devDependencies": {
+    "webpack": "^4.2.0"
+  }
 }
