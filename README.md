@@ -1,2 +1,2 @@
-# airbnbjs
-practice airbnb
+# airbnb javaScript Style Guide
+practice avaScript Style Guide
