@@ -1,6 +1,60 @@
 # airbnb javaScript Style Guide
 practice javaScript Style Guide
 
+---
+
+# babel编译转换标准通用语法
+
+> 项目中可以使用最新javascript版本语法，但是浏览器并不完全支持，为了浏览器能够支持所以需要编译转换为浏览器的支持的标准语法，所以babel是不二首选
+- ## webpack4的babel配置
+1. 安装babel核心、模块解析包以及预处理器
+
+```
+npm install --save-dev babel-core babel-loader babel-preset-env
+```
+2. 配置模块解析包（配置文件例如：webpack.config.js）以及预处理器（.babelrc）
+
+```
+rules: [
+  {
+    test: /\.js|jsx$/,
+    exclude: /node_modules/,
+    use: [
+      "babel-loader"
+    ]
+  },
+]
+```
+
+```
+{
+  "presets": ["env"]
+}
+```
+- ## 不支持新的通用标准以及原生语法怎么办？比如Promise
+1. babel-polyfill的cdn方式，放在html head标签里靠前位置
+```
+<script src="https://cdn.bootcss.com/babel-polyfill/6.26.0/polyfill.min.js"></script>
+```
+2. babel-polyfill的npm方式（两种）
+```
+npm i babel-polyfill --save-dev
+```
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;方法1：在入口文件最顶部
+```
+import 'babel-polyfill'
+```
+&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;方法2：配置入口文件，比如：
+```
+entry: {
+    app: [
+      'babel-polyfill',
+      './src/index'
+    ]
+  },
+```
+---
+
 
 # 按需加载
 > 有时候项目需要为了提高首次载入速度而需要按需加载，比如react-router的按需加载
@@ -27,7 +81,6 @@ npm install --save-dev babel-plugin-syntax-dynamic-import
     chunkFilename: '[name].bundle.js',
 }
 ```
-
 
 - ## 按需加载的写法
 1. import
