@@ -1,7 +1,7 @@
 {
-  "name": "airbnb-guide",
+  "name": "webpack-fullseries-tool",
   "version": "1.0.0",
-  "description": "practice javaScript Style Guide",
+  "description": "webpack full series tool for Front-end Engineer",
   "private": true,
   "scripts": {
     "start": "cross-env NODE_ENV=development node server.js",
@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/hufei1993/airbnb-guide.git"
+    "url": "git+https://github.com/hufei1993/webpack-fullseries-tool.git"
   },
   "keywords": [],
   "author": "hufei1993",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hufei1993/airbnb-guide/issues"
+    "url": "https://github.com/hufei1993/webpack-fullseries-tool/issues"
   },
-  "homepage": "https://github.com/hufei1993/airbnb-guide#readme",
+  "homepage": "https://github.com/hufei1993/webpack-fullseries-tool#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
