@@ -112,7 +112,7 @@ switch (process.env.NODE_ENV) {
           {
             loader: 'css-loader',
             options: {
-              modules: true
+              modules: false
             }
           }
         ]
@@ -162,7 +162,7 @@ switch (process.env.NODE_ENV) {
           {
             loader: 'css-loader',
             options: {
-              modules: true
+              modules: false
             }
           }
         ]
