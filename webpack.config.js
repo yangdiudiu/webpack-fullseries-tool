@@ -37,18 +37,7 @@ let config = {
           "babel-loader"
         ]
       },
-      {
-        test: /\.css$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: 'css-loader',
-            options: {
-              modules: true
-            }
-          }
-        ]
-      },
+
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
@@ -105,11 +94,26 @@ switch (process.env.NODE_ENV) {
     config.output.publicPath = '/';
     config.devtool = 'cheap-eval-source-map';
     config.mode = 'development';
+    config.optimization={
+      noEmitOnErrors:true
+    };
     config.plugins = config.plugins.concat(
-      new webpack.HotModuleReplacementPlugin(),
-      new webpack.NoEmitOnErrorsPlugin()
+      new webpack.HotModuleReplacementPlugin()
     );
-
+    config.module.rules=config.module.rules.concat(
+      {
+        test: /\.css$/,
+        use: [
+          'style-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          }
+        ]
+      },
+    );
     break;
   case 'production':
     config.entry = {
@@ -136,8 +140,30 @@ switch (process.env.NODE_ENV) {
       path: path.resolve(__dirname, 'dist'),
       publicPath: "",//相对于HTML页面解析的输出目录的url
     };
-
+    config.optimization={
+      splitChunks:{
+        chunks:'all',
+        name:'common'
+      },
+      runtimeChunk:{
+        name:'runtime'
+      }
+    };
     config.cache = true;
+    config.module.rules=config.module.rules.concat(
+      {
+        test: /\.css$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: 'css-loader',
+            options: {
+              modules: true
+            }
+          }
+        ]
+      },
+    );
     break;
   default:
     break;
