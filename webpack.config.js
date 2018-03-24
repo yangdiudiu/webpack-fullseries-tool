@@ -21,7 +21,7 @@ let config = {
     alias: {
       statics: path.resolve(__dirname, 'src/statics')
     },
-    extensions: ['.js', '.json']
+    extensions: ['.js', '.json','.tsx', '.ts',]
   },
   externals: [],
   stats: {
@@ -37,7 +37,11 @@ let config = {
           "babel-loader"
         ]
       },
-
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
@@ -92,7 +96,7 @@ switch (process.env.NODE_ENV) {
       ]
     };
     config.output.publicPath = '/';
-    config.devtool = 'cheap-eval-source-map';
+    config.devtool = 'eval-source-map';
     config.mode = 'development';
     config.optimization={
       noEmitOnErrors:true

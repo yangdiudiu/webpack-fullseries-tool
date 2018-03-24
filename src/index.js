@@ -1,5 +1,6 @@
 import './index.css';
 import './statics/part3.png';
+import test from './test';
 /**
  * 热刷新
  */
@@ -21,7 +22,10 @@ if ('serviceWorker' in navigator) {
   });
 }
 
-
+for(let i of [1,2,3,4,5]){
+  console.log(i)
+}
+console.log(test);
 // function getComponent() {
 //   return import('lodash').then(_ => {
 //     var element = document.createElement('div');
