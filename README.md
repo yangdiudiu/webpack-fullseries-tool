@@ -1,8 +1,13 @@
-# airbnb javaScript Style Guide
-practice javaScript Style Guide
-
+# webpack-fullseries-tool
+> 曰：“工欲善其事，必先利其器”，此项目专为前端工程师打造的webpack全系列开发，不局限于官网建设、后台管理系统、移动端开发（h5）。不局限于react、vue等框架
 ---
-
+# 项目分支介绍
+> 项目分支目前支持基础webpack项目建设（可扩展性），移动端开发，后台管理系统
+- ## dev分支
+> 配置完善的webpack基建，可由用户在此基础上应用于其他框架项目
+- ## mobile分支
+> 用于开发h5的利器，具备完善的手机适配方案，全面支持sass
+---
 # babel编译转换标准通用语法
 
 > 项目中可以使用最新javascript版本语法，但是浏览器并不完全支持，为了浏览器能够支持所以需要编译转换为浏览器的支持的标准语法，所以babel是不二首选
