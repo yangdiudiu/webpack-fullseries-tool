@@ -9,10 +9,10 @@ const compiler = webpack(config);
 
 const instance = webpackDevMiddleware(compiler, {
   logLevel:'warn',
-  // stats: {
-  //   colors: true,
-  //   modules: false,
-  // },
+  stats: {
+    colors: true,
+    modules: false,
+  },
   publicPath: config.output.publicPath,
   lazy: false
 });

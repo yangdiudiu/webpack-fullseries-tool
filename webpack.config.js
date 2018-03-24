@@ -101,7 +101,7 @@ switch (process.env.NODE_ENV) {
       ]
     };
     config.output.publicPath = '/';
-    config.devtool = 'eval-source-map';
+    config.devtool = 'cheap-eval-source-map';
     config.mode = 'development';
     config.plugins = config.plugins.concat(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
 
@@ -116,6 +116,7 @@ switch (process.env.NODE_ENV) {
     config.mode = 'production';
     config.output = {
       filename: '[name].bundle.js',
+      chunkFilename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
       publicPath: "",//相对于HTML页面解析的输出目录的url
     };
