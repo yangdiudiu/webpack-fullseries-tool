@@ -1,16 +1,24 @@
 import './index.css';
 import './statics/part3.png';
-
+/**
+ * 热刷新
+ */
 if (module.hot) {
   module.hot.accept('./index', function () {
 
-
   })
 }
-
-
-for (let i of [1, 2, 3, 9, 99]) {
-  console.log(i);
+/**
+ * 注册离线应用
+ */
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/service-worker.js').then(registration => {
+      console.log('SW registered: ', registration);
+    }).catch(registrationError => {
+      console.log('SW registration failed: ', registrationError);
+    });
+  });
 }
 
 
@@ -34,10 +42,10 @@ for (let i of [1, 2, 3, 9, 99]) {
 // });
 
 
-require.ensure([], function(require) {
-  let bundle = require("lodash");
-  console.log(bundle);
-}, 'bundle');
+// require.ensure([], function(require) {
+//   let bundle = require("lodash");
+//   console.log(bundle);
+// }, 'bundle');
 
 
 

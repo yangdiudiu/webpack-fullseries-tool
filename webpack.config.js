@@ -4,6 +4,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 const MinifyPlugin = require("babel-minify-webpack-plugin");
+const WorkboxPlugin = require('workbox-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 console.log('NODE_ENV: ', process.env.NODE_ENV);
 let config = {
   entry: {
@@ -38,7 +40,7 @@ let config = {
       {
         test: /\.css$/,
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           {
             loader: 'css-loader',
             options: {
@@ -103,7 +105,10 @@ switch (process.env.NODE_ENV) {
     config.output.publicPath = '/';
     config.devtool = 'cheap-eval-source-map';
     config.mode = 'development';
-    config.plugins = config.plugins.concat(new webpack.HotModuleReplacementPlugin(), new webpack.NoEmitOnErrorsPlugin());
+    config.plugins = config.plugins.concat(
+      new webpack.HotModuleReplacementPlugin(),
+      new webpack.NoEmitOnErrorsPlugin()
+    );
 
     break;
   case 'production':
@@ -112,10 +117,21 @@ switch (process.env.NODE_ENV) {
         './src/index'
       ]
     };
-    config.plugins = config.plugins.concat(new CleanWebpackPlugin(['dist']), new MinifyPlugin());
+    config.plugins = config.plugins.concat(
+      new CleanWebpackPlugin(['dist']),
+      new MinifyPlugin(),
+      new WorkboxPlugin.GenerateSW({
+        clientsClaim: true,
+        skipWaiting: true
+      }),
+      new MiniCssExtractPlugin({
+        filename: "css/[name].css",
+        chunkFilename: "css/[id].css"
+      })
+    );
     config.mode = 'production';
     config.output = {
-      filename: '[name].bundle.js',
+      filename: 'js/[name].bundle.js',
       chunkFilename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
       publicPath: "",//相对于HTML页面解析的输出目录的url
