@@ -14,6 +14,30 @@ for (let i of [1, 2, 3, 9, 99]) {
 }
 
 
+// function getComponent() {
+//   return import('lodash').then(_ => {
+//     var element = document.createElement('div');
+//     return element;
+//   }).catch(error => console.log(error));
+// }
+// getComponent().then(component => {
+//   console.log(component);
+// });
+
+
+// async function getComponent() {
+//   const bundle = await import('lodash');
+//   return bundle;
+// }
+// getComponent().then(bundle => {
+//   console.log(bundle.default)
+// });
+
+
+require.ensure([], function(require) {
+  let bundle = require("lodash");
+  console.log(bundle);
+}, 'bundle');
 
 
 
