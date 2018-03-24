@@ -1,17 +1,17 @@
 @media only screen and (device-width:375px) and (device-height:812px) and (-webkit-device-pixel-ratio:3) {
   /* iPhone X 独有样式写在这里*/
 }
-[aspectratio]{
+.aspectratio{
   position: relative;
 }
-[aspectratio]::before {
+.aspectratio::before {
     content: '';
     display: block;
     width: 1px;
     margin-left: -1px;
     height: 0;
   }
-[aspectratio-content] {
+.aspectratio-content {
   position: absolute;
   top: 0;
   left: 0;
@@ -20,12 +20,7 @@
   width: 100%;
   height: 100%;
 }
-
-
-
-
-
-
+//开始写下你的样式
 .test{
   aspect-ratio: '188:246';
 }
@@ -33,16 +28,6 @@
   background: gainsboro;
   width: 100px;
 }
-[w-188-246] {
-  aspect-ratio: '188:246';
-}
-.color{
-  background-color: blue;
-  width: 100px;
-}
-
-
-
 body{
   background: red;
   display: flex;
