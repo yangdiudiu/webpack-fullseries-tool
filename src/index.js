@@ -1,4 +1,5 @@
 import './index.css';
+import './test.scss';
 import './statics/part3.png';
 import test from './test';
 /**

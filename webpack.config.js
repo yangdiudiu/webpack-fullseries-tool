@@ -8,9 +8,7 @@ const WorkboxPlugin = require('workbox-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 console.log('NODE_ENV: ', process.env.NODE_ENV);
 let config = {
-  entry: {
-
-  },
+  entry: {},
   output: {},
   plugins: [
     new HtmlWebpackPlugin({
@@ -21,7 +19,7 @@ let config = {
     alias: {
       statics: path.resolve(__dirname, 'src/statics')
     },
-    extensions: ['.js', '.json','.tsx', '.ts',]
+    extensions: ['.js', '.json', '.tsx', '.ts',]
   },
   externals: [],
   stats: {
@@ -98,13 +96,13 @@ switch (process.env.NODE_ENV) {
     config.output.publicPath = '/';
     config.devtool = 'eval-source-map';
     config.mode = 'development';
-    config.optimization={
-      noEmitOnErrors:true
+    config.optimization = {
+      noEmitOnErrors: true
     };
     config.plugins = config.plugins.concat(
       new webpack.HotModuleReplacementPlugin()
     );
-    config.module.rules=config.module.rules.concat(
+    config.module.rules = config.module.rules.concat(
       {
         test: /\.css$/,
         use: [
@@ -112,9 +110,19 @@ switch (process.env.NODE_ENV) {
           {
             loader: 'css-loader',
             options: {
-              modules: true
+              modules: false
             }
-          }
+          },
+          'postcss-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
         ]
       },
     );
@@ -144,17 +152,17 @@ switch (process.env.NODE_ENV) {
       path: path.resolve(__dirname, 'dist'),
       publicPath: "",//相对于HTML页面解析的输出目录的url
     };
-    config.optimization={
-      splitChunks:{
-        chunks:'all',
-        name:'common'
+    config.optimization = {
+      splitChunks: {
+        chunks: 'all',
+        name: 'common'
       },
-      runtimeChunk:{
-        name:'runtime'
+      runtimeChunk: {
+        name: 'runtime'
       }
     };
     config.cache = true;
-    config.module.rules=config.module.rules.concat(
+    config.module.rules = config.module.rules.concat(
       {
         test: /\.css$/,
         use: [
@@ -162,9 +170,19 @@ switch (process.env.NODE_ENV) {
           {
             loader: 'css-loader',
             options: {
-              modules: true
+              modules: false
             }
-          }
+          },
+          'postcss-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader',
         ]
       },
     );
