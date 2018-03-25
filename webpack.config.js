@@ -135,14 +135,14 @@ switch (process.env.NODE_ENV) {
         skipWaiting: true
       }),
       new MiniCssExtractPlugin({
-        filename: "[name].css",
-        chunkFilename: "[id].css"
+        filename: "css/[name].css",
+        chunkFilename: "css/[id].css"
       })
     );
     config.mode = 'production';
     config.output = {
       filename: 'js/[name].bundle.js',
-      chunkFilename: 'js/[name].bundle.js',
+      chunkFilename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
       publicPath: "",//相对于HTML页面解析的输出目录的url
     };
