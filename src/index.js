@@ -1,6 +1,6 @@
-import './index.css';
-import './test.scss';
-import './statics/part3.png';
+import './styles/index.css';
+import './styles/test.scss';
+import './assets/part3.png';
 import test from './test';
 /**
  * 热刷新
