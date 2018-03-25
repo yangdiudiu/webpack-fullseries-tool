@@ -1,5 +1,5 @@
 import './styles/index.css';
-// import './statics/part3.png';
+import a from './assets/part3.png';
 import test from './test';
 /**
  * 热刷新
@@ -26,6 +26,7 @@ for(let i of [1,2,3,4,5]){
   console.log(i)
 }
 console.log(test);
+console.log(a);
 
 // function getComponent() {
 //   return import('lodash').then(_ => {

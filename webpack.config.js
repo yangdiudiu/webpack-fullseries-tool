@@ -45,7 +45,13 @@ let config = {
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
-          'file-loader',
+          {
+            loader:'file-loader',
+            options: {
+              name:'statics/[hash].[ext]',
+              publicPath:'../',
+            }
+          },
           {
             loader: 'image-webpack-loader',// minifying your images
             options: {
@@ -128,8 +134,8 @@ switch (process.env.NODE_ENV) {
         skipWaiting: true
       }),
       new MiniCssExtractPlugin({
-        filename: "[name].css",
-        chunkFilename: "[id].css"
+        filename: "css/[name].css",
+        chunkFilename: "css/[id].css"
       })
     );
     config.mode = 'production';
