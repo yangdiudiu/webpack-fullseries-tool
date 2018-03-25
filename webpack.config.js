@@ -50,12 +50,6 @@ let config = {
               bypassOnDebug: true,
             },
           },
-          {
-            loader: 'url-loader',// return a DataURL if the file is smaller than a byte limit
-            options: {
-              limit: 8192
-            }
-          }
         ]
       },
       {
@@ -141,14 +135,14 @@ switch (process.env.NODE_ENV) {
         skipWaiting: true
       }),
       new MiniCssExtractPlugin({
-        filename: "css/[name].css",
-        chunkFilename: "css/[id].css"
+        filename: "[name].css",
+        chunkFilename: "[id].css"
       })
     );
     config.mode = 'production';
     config.output = {
       filename: 'js/[name].bundle.js',
-      chunkFilename: '[name].bundle.js',
+      chunkFilename: 'js/[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
       publicPath: "",//相对于HTML页面解析的输出目录的url
     };
