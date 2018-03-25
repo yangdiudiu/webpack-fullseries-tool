@@ -1,5 +1,5 @@
-import './index.css';
-import './statics/part3.png';
+import './styles/index.css';
+// import './statics/part3.png';
 import test from './test';
 /**
  * 热刷新
