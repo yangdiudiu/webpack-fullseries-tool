@@ -135,8 +135,8 @@ switch (process.env.NODE_ENV) {
         skipWaiting: true
       }),
       new MiniCssExtractPlugin({
-        filename: "css/[name].css",
-        chunkFilename: "css/[id].css"
+        filename: "[name].css",
+        chunkFilename: "[id].css"
       })
     );
     config.mode = 'production';
