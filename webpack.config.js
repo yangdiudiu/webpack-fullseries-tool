@@ -6,6 +6,8 @@ const hotMiddlewareScript = 'webpack-hot-middleware/client?reload=true';
 const MinifyPlugin = require("babel-minify-webpack-plugin");
 const WorkboxPlugin = require('workbox-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ManifestPlugin = require('webpack-manifest-plugin');
 console.log('NODE_ENV: ', process.env.NODE_ENV);
 let config = {
   entry: {
@@ -16,10 +18,28 @@ let config = {
     new HtmlWebpackPlugin({
       template: 'index.html'
     }),
+    new CopyWebpackPlugin([
+      {
+        from: 'src/static/',
+        to: 'static/',
+        toType: 'dir'
+      }
+    ], {
+
+    }),
+    new ManifestPlugin({
+      fileName:'static/static_list.json',
+      filter:function (obj) {
+        return obj.path.indexOf('assets/')>-1
+      }
+    }),
+
   ],
   resolve: {
     alias: {
-      statics: path.resolve(__dirname, 'src/statics')
+      static: path.resolve(__dirname, './src/static'),
+      tools:path.resolve(__dirname, './src/tools'),
+      styles:path.resolve(__dirname, './src/styles')
     },
     extensions: ['.js', '.json','.tsx', '.ts',]
   },
@@ -48,7 +68,7 @@ let config = {
           {
             loader:'file-loader',
             options: {
-              name:'statics/[hash].[ext]',
+              name:'assets/[hash].[ext]',
               publicPath:'../',
             }
           },
