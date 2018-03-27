@@ -155,7 +155,7 @@ switch (process.env.NODE_ENV) {
       }),
       new MiniCssExtractPlugin({
         filename: "css/[name].css",
-        chunkFilename: "css/[id].css"
+        chunkFilename: "css/[name].css"
       })
     );
     config.mode = 'production';
