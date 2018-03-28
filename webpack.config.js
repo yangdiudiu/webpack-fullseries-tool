@@ -28,7 +28,7 @@ let config = {
 
     }),
     new ManifestPlugin({
-      fileName:'static/static_list.json',
+      fileName:'assets/static_list.json',
       filter:function (obj) {
         return obj.path.indexOf('assets/')>-1
       }
