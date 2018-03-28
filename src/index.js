@@ -9,18 +9,6 @@ if (module.hot) {
   })
 }
 /**
- * 注册离线应用
- */
-if ('serviceWorker' in navigator) {
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/service-worker.js').then(registration => {
-      console.log('SW registered: ', registration);
-    }).catch(registrationError => {
-      console.log('SW registration failed: ', registrationError);
-    });
-  });
-}
-/**
  * 请求静态文件列表 可做进度条
  */
 console.log(config);
