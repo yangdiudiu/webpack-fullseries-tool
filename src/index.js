@@ -22,7 +22,7 @@ if ('serviceWorker' in navigator) {
   });
 }
 /**
- * 请求静态文件列表
+ * 请求静态文件列表（可做加载进度）
  */
 console.log(config);
 axios.get(config.staticlist)
