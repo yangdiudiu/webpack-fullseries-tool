@@ -6,7 +6,8 @@
   "scripts": {
     "start": "cross-env NODE_ENV=development node server.js",
     "dist": "cross-env NODE_ENV=production webpack --progress",
-    "test": "http-server dist"
+    "test": "http-server dist",
+    "analyze": "cross-env NODE_ENV=analyze webpack --progress"
   },
   "repository": {
     "type": "git",
