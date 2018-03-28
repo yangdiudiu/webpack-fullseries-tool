@@ -28,7 +28,7 @@ let config = {
 
     }),
     new ManifestPlugin({
-      fileName:'static/static_list.json',
+      fileName:'assets/static_list.json',
       filter:function (obj) {
         return obj.path.indexOf('assets/')>-1
       }
@@ -56,6 +56,24 @@ let config = {
         use: [
           "babel-loader"
         ]
+      },{
+        test: /\.scss$/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [{
+          loader: "style-loader"
+        }, {
+          loader: "css-loader"
+        }, {
+          loader: "less-loader"
+        }]
       },
       {
         test: /\.tsx?$/,
@@ -138,15 +156,6 @@ switch (process.env.NODE_ENV) {
           'postcss-loader'
         ]
       },
-      {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader',
-          'sass-loader'
-        ]
-      },
     );
     break;
   case 'production':
@@ -196,15 +205,6 @@ switch (process.env.NODE_ENV) {
             }
           },
           'postcss-loader'
-        ]
-      },
-      {
-        test: /\.scss$/,
-        use: [
-          'style-loader',
-          'css-loader',
-          'postcss-loader',
-          'sass-loader',
         ]
       },
     );
