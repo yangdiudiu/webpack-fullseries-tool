@@ -153,10 +153,6 @@ if (process.env.NODE_ENV === 'development') {
   config.plugins = config.plugins.concat(
     new CleanWebpackPlugin(['dist']),
     new MinifyPlugin(),
-    new WorkboxPlugin.GenerateSW({
-      clientsClaim: true,
-      skipWaiting: true
-    }),
     new MiniCssExtractPlugin({
       filename: "css/[name].css",
       chunkFilename: "css/[name].css"
