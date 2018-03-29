@@ -8,7 +8,7 @@ h1 {
 }
 
 body {
-    background: red;
+    /*background: red;*/
     display: flex;
     color: var(--mainColor);
     background: url("../static/logo.png") no-repeat;
