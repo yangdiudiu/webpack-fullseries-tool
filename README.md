@@ -7,6 +7,8 @@
 > 配置完善的webpack基建，可由用户在此基础上应用于其他框架项目
 - ## mobile分支
 > 用于开发h5的利器，具备完善的手机适配方案，全面支持sass
+- ## admin分支
+> react+redux+antdesign+less开发大中型企业级后台管理系统
 ---
 # 二、项目使用教程
 > 在node环境下安装有npm、cnpm、yarn
