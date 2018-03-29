@@ -6,7 +6,7 @@ const ip = require('ip');
 const app = express();
 const config = require('./webpack.config.js');
 const compiler = webpack(config);
-const port = 3000;
+const port = 8888;
 const instance = webpackDevMiddleware(compiler, {
   logLevel:'warn',
   stats: {
