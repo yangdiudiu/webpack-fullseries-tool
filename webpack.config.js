@@ -161,7 +161,7 @@ if (process.env.NODE_ENV === 'development') {
   config.mode = 'production';
   config.output = {
     filename: 'js/[name].[hash].js',
-    chunkFilename: 'js/[name].[hash].js',
+    chunkFilename: 'js/[name].bundle.js',
     path: path.resolve(__dirname, 'dist'),
     publicPath: "",//相对于HTML页面解析的输出目录的url
   };
